@@ -75,19 +75,4 @@ xlabel('Months','FontSize',14);
 ylabel('Autocorrelation','FontSize',14);
 
 
-%6
-%Monte Carlo
-Monte_Carlo = zeros(12*num_years, 1);
-for i = 1:num_years
-    for j = 1:12
-        m = randn(num_years);
-        Monte_Carlo((i-1)*12+j) = d(j,m);
-    end
-end
 
-figure;
-
-subplot(2,2,3);
-plot(Monte_Carlo);
-xlabel('Year','FontSize',14);
-ylabel('Demand (MWh)','FontSize',14);
