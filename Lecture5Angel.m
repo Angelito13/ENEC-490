@@ -65,11 +65,11 @@ for i = window/2 + 1:num_hours-window/2
     
     % calculate the mean for every point in transformed data from (i-250)
     % to (i + 250) (a 501 point window)
-    window_mean = mean(transformed_data(1:250):transformed_data(251:501) );
+    window_mean = mean(transformed_data(i-window/2: i+window/2));
     
     % calculate the std. deviation for every point in transformed data from
     % (i-250) to (i + 250) (a 501 point window)
-    window_std = std(transformed_data(1:250):transformed_data(251:501));
+    window_std = std(transformed_data(i-window/2: i+window/2));
     
     % test whether points 251:8510 in transformed data are outliers
     if transformed_data(i) >= window_mean + 3*window_std | transformed_data(i) <= window_mean - 3*window_std
@@ -93,3 +93,4 @@ temp_vector = temp_data(:,2);
 xlabel('Peak Energy Demand', 'FontSize',14)
 ylabel('Temperature', 'FontSize', 14)
 title('Temperature VS Peak Energy Demand')
+scatter(new_vector,temp_vector)
