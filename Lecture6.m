@@ -52,10 +52,36 @@ plot(January);
 plot(July);
 
 
-SUNDAY = data_2014(data_2014(1:365:7, :) == 1, 1:24);
-MONDAY = data_2014(data_2014(2:365:7, :) == 2, 1:24);
-TUESDAY = data_2014(data_2014(3:365:7, :) == 3, 1:24);
-WEDNESDAY= data_2014(data_2014(4:365:7, :) == 4, 1:24);
-THURSDAY = data_2014(data_2014(5:365:7, :) == 5, 1:24);
-FRIDAY = data_2014(data_2014(6:365:7, :) == 6, 1:24);
-SATURDAY = data_2014(data_2014(7:365:7, :) == 7, 1:24);
+%Days-of-the-week
+%January 1 - Wednesday (4)
+%Sun - 1
+%Mon - 2
+%Tues - 3
+%Wed - 4
+%Thurs - 5
+%Frid - 6
+%Sat - 7
+
+day = 4
+calender = zeros(365,1);
+for i = 1:365
+    calender(i) = day;
+    if day < 7
+        day = day + 1;
+    else
+        day = 1;
+    end
+end
+
+combined = [peak calender];
+x  = sortrows(combined,2);
+
+combined = [peak calender];
+x  = sortrows(combined,2);
+SUN = x(x(:, )==  ,1);
+MON = x(x(:, )==  ,1);
+TUE = x(x(:, )==  ,1);
+WED = x(x(:, )==  ,1);
+THU = x(x(:, )==  ,1);
+FRI = x(x(:, )==  ,1);
+SAT = x(x(:, )==  ,1);
