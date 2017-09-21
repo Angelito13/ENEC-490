@@ -27,9 +27,6 @@ end
 % convert losses to $1000s
 losses_dollars = (losses*100)/1000;
 
-hold on;
-histogram(losses_dollars)
-
 annual_losses = zeros(41,1);
 
 for i = 1:41
@@ -71,9 +68,6 @@ end
 cc_losses_dollars = (cc_losses*100)/1000;
 
 
-histogram(cc_losses_dollars)
-
-
 annual_losses_cc = zeros(41,1);
 
 for i = 1:41
@@ -83,3 +77,15 @@ end
 sorted_losses_cc = sort(annual_losses_cc);
 idx_cc = round(.95*41);
 CVar = sorted_losses_cc(idx_cc);
+
+% create common edges of bins for both histograms
+b = ceil(max(annual_losses_cc)/100000)*100000;
+edges = [0:10000:b];
+
+figure; 
+hold on; 
+histogram(annual_losses_cc,edges);
+histogram(annual_losses,edges);
+ylabel('Frequency','FontSize',14);
+xlabel('Losses $1000s','FontSize',14);
+legend('1970-2010','Climate Change');
